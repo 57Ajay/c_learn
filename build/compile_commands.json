@@ -1,0 +1,20 @@
+[
+{
+  "directory": "C:/projects/c_learn/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe  @CMakeFiles/c_learn.dir/includes_C.rsp -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\c_learn.dir\\src\\main.c.obj -c C:\\projects\\c_learn\\src\\main.c",
+  "file": "C:/projects/c_learn/src/main.c",
+  "output": "CMakeFiles/c_learn.dir/src/main.c.obj"
+},
+{
+  "directory": "C:/projects/c_learn/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe  @CMakeFiles/c_learn.dir/includes_C.rsp -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\c_learn.dir\\src\\more.c.obj -c C:\\projects\\c_learn\\src\\more.c",
+  "file": "C:/projects/c_learn/src/more.c",
+  "output": "CMakeFiles/c_learn.dir/src/more.c.obj"
+},
+{
+  "directory": "C:/projects/c_learn/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe  @CMakeFiles/c_learn.dir/includes_C.rsp -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\c_learn.dir\\src\\files.c.obj -c C:\\projects\\c_learn\\src\\files.c",
+  "file": "C:/projects/c_learn/src/files.c",
+  "output": "CMakeFiles/c_learn.dir/src/files.c.obj"
+}
+]
