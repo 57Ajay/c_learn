@@ -1,5 +1,5 @@
-#ifndef MORE_H
-#define MORE_H
+#ifndef FILES_H
+#define FILES_H
 
 int fmain();
 #endif
