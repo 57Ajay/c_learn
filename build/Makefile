@@ -176,6 +176,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/memMngmnt.obj: src/memMngmnt.c.obj
+.PHONY : src/memMngmnt.obj
+
+# target to build an object file
+src/memMngmnt.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/memMngmnt.c.obj
+.PHONY : src/memMngmnt.c.obj
+
+src/memMngmnt.i: src/memMngmnt.c.i
+.PHONY : src/memMngmnt.i
+
+# target to preprocess a source file
+src/memMngmnt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/memMngmnt.c.i
+.PHONY : src/memMngmnt.c.i
+
+src/memMngmnt.s: src/memMngmnt.c.s
+.PHONY : src/memMngmnt.s
+
+# target to generate assembly for a file
+src/memMngmnt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/memMngmnt.c.s
+.PHONY : src/memMngmnt.c.s
+
 src/more.obj: src/more.c.obj
 .PHONY : src/more.obj
 
@@ -200,6 +224,30 @@ src/more.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/more.c.s
 .PHONY : src/more.c.s
 
+src/structs.obj: src/structs.c.obj
+.PHONY : src/structs.obj
+
+# target to build an object file
+src/structs.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/structs.c.obj
+.PHONY : src/structs.c.obj
+
+src/structs.i: src/structs.c.i
+.PHONY : src/structs.i
+
+# target to preprocess a source file
+src/structs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/structs.c.i
+.PHONY : src/structs.c.i
+
+src/structs.s: src/structs.c.s
+.PHONY : src/structs.s
+
+# target to generate assembly for a file
+src/structs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\c_learn.dir\build.make CMakeFiles/c_learn.dir/src/structs.c.s
+.PHONY : src/structs.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -215,9 +263,15 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/memMngmnt.obj
+	@echo ... src/memMngmnt.i
+	@echo ... src/memMngmnt.s
 	@echo ... src/more.obj
 	@echo ... src/more.i
 	@echo ... src/more.s
+	@echo ... src/structs.obj
+	@echo ... src/structs.i
+	@echo ... src/structs.s
 .PHONY : help
 
 

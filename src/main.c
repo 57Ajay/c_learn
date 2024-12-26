@@ -1,5 +1,7 @@
 #include "files.h"
+#include "memMngmnt.h"
 #include "more.h"
+#include "structs.h"
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct {
@@ -47,5 +49,9 @@ int main(void) {
   moreMain();
   printf("\n----files.c----\n");
   fmain();
+  printf("\n----structs.c----\n");
+  structMain();
+  printf("\n----MemoryManagement.c----\n");
+  memMngmntMain();
   return 0;
 }

@@ -37,7 +37,34 @@ CMakeFiles/c_learn.dir/src/main.c.obj: C:/projects/c_learn/src/main.c \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h \
   C:/projects/c_learn/include/files.h \
-  C:/projects/c_learn/include/more.h
+  C:/projects/c_learn/include/memMngmnt.h \
+  C:/projects/c_learn/include/more.h \
+  C:/projects/c_learn/include/structs.h
+
+CMakeFiles/c_learn.dir/src/memMngmnt.c.obj: C:/projects/c_learn/src/memMngmnt.c \
+  C:/msys64/mingw64/include/_mingw.h \
+  C:/msys64/mingw64/include/_mingw_mac.h \
+  C:/msys64/mingw64/include/_mingw_off_t.h \
+  C:/msys64/mingw64/include/_mingw_secapi.h \
+  C:/msys64/mingw64/include/corecrt.h \
+  C:/msys64/mingw64/include/corecrt_stdio_config.h \
+  C:/msys64/mingw64/include/corecrt_wstdlib.h \
+  C:/msys64/mingw64/include/crtdefs.h \
+  C:/msys64/mingw64/include/errno.h \
+  C:/msys64/mingw64/include/limits.h \
+  C:/msys64/mingw64/include/malloc.h \
+  C:/msys64/mingw64/include/sdks/_mingw_ddk.h \
+  C:/msys64/mingw64/include/sec_api/stdio_s.h \
+  C:/msys64/mingw64/include/sec_api/stdlib_s.h \
+  C:/msys64/mingw64/include/sec_api/string_s.h \
+  C:/msys64/mingw64/include/stdio.h \
+  C:/msys64/mingw64/include/stdlib.h \
+  C:/msys64/mingw64/include/string.h \
+  C:/msys64/mingw64/include/swprintf.inl \
+  C:/msys64/mingw64/include/vadefs.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h
 
 CMakeFiles/c_learn.dir/src/more.c.obj: C:/projects/c_learn/src/more.c \
   C:/msys64/mingw64/include/_mingw.h \
@@ -58,12 +85,36 @@ CMakeFiles/c_learn.dir/src/more.c.obj: C:/projects/c_learn/src/more.c \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdbool.h \
   C:/projects/c_learn/include/more.h
 
+CMakeFiles/c_learn.dir/src/structs.c.obj: C:/projects/c_learn/src/structs.c \
+  C:/msys64/mingw64/include/_mingw.h \
+  C:/msys64/mingw64/include/_mingw_mac.h \
+  C:/msys64/mingw64/include/_mingw_off_t.h \
+  C:/msys64/mingw64/include/_mingw_secapi.h \
+  C:/msys64/mingw64/include/corecrt.h \
+  C:/msys64/mingw64/include/corecrt_stdio_config.h \
+  C:/msys64/mingw64/include/crtdefs.h \
+  C:/msys64/mingw64/include/sdks/_mingw_ddk.h \
+  C:/msys64/mingw64/include/sec_api/stdio_s.h \
+  C:/msys64/mingw64/include/sec_api/string_s.h \
+  C:/msys64/mingw64/include/stdio.h \
+  C:/msys64/mingw64/include/string.h \
+  C:/msys64/mingw64/include/swprintf.inl \
+  C:/msys64/mingw64/include/vadefs.h
+
+
+C:/projects/c_learn/src/structs.c:
+
+C:/projects/c_learn/src/more.c:
+
+C:/msys64/mingw64/include/math.h:
+
+C:/msys64/mingw64/include/string.h:
 
 C:/projects/c_learn/src/main.c:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h:
+C:/projects/c_learn/src/memMngmnt.c:
 
-C:/projects/c_learn/src/more.c:
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h:
 
 C:/msys64/mingw64/include/sec_api/stdio_s.h:
 
@@ -83,9 +134,13 @@ C:/msys64/mingw64/include/swprintf.inl:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h:
 
+C:/projects/c_learn/include/structs.h:
+
 C:/projects/c_learn/include/more.h:
 
 C:/msys64/mingw64/include/_mingw_off_t.h:
+
+C:/projects/c_learn/include/memMngmnt.h:
 
 C:/msys64/mingw64/include/errno.h:
 
@@ -114,7 +169,3 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h:
 C:/msys64/mingw64/include/stdio.h:
 
 C:/msys64/mingw64/include/sec_api/string_s.h:
-
-C:/msys64/mingw64/include/math.h:
-
-C:/msys64/mingw64/include/string.h:

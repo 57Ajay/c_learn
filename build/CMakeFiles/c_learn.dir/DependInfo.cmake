@@ -10,7 +10,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/projects/c_learn/src/files.c" "CMakeFiles/c_learn.dir/src/files.c.obj" "gcc" "CMakeFiles/c_learn.dir/src/files.c.obj.d"
   "C:/projects/c_learn/src/main.c" "CMakeFiles/c_learn.dir/src/main.c.obj" "gcc" "CMakeFiles/c_learn.dir/src/main.c.obj.d"
+  "C:/projects/c_learn/src/memMngmnt.c" "CMakeFiles/c_learn.dir/src/memMngmnt.c.obj" "gcc" "CMakeFiles/c_learn.dir/src/memMngmnt.c.obj.d"
   "C:/projects/c_learn/src/more.c" "CMakeFiles/c_learn.dir/src/more.c.obj" "gcc" "CMakeFiles/c_learn.dir/src/more.c.obj.d"
+  "C:/projects/c_learn/src/structs.c" "CMakeFiles/c_learn.dir/src/structs.c.obj" "gcc" "CMakeFiles/c_learn.dir/src/structs.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

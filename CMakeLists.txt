@@ -24,6 +24,8 @@ add_executable(${PROJECT_NAME}
   src/main.c
   src/more.c
   src/files.c
+  src/structs.c
+  src/memMngmnt.c
 )
 
 # Set output directory
