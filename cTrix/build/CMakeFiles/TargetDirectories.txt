@@ -1,0 +1,3 @@
+C:/projects/cProjects/c_learn/cTrix/build/CMakeFiles/c_lear.dir
+C:/projects/cProjects/c_learn/cTrix/build/CMakeFiles/edit_cache.dir
+C:/projects/cProjects/c_learn/cTrix/build/CMakeFiles/rebuild_cache.dir

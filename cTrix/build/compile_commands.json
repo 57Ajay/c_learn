@@ -1,0 +1,20 @@
+[
+{
+  "directory": "C:/projects/cProjects/c_learn/cTrix/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe  @CMakeFiles/c_lear.dir/includes_C.rsp -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\c_lear.dir\\src\\main.c.obj -c C:\\projects\\cProjects\\c_learn\\cTrix\\src\\main.c",
+  "file": "C:/projects/cProjects/c_learn/cTrix/src/main.c",
+  "output": "CMakeFiles/c_lear.dir/src/main.c.obj"
+},
+{
+  "directory": "C:/projects/cProjects/c_learn/cTrix/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe  @CMakeFiles/c_lear.dir/includes_C.rsp -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\c_lear.dir\\src\\matrix.c.obj -c C:\\projects\\cProjects\\c_learn\\cTrix\\src\\matrix.c",
+  "file": "C:/projects/cProjects/c_learn/cTrix/src/matrix.c",
+  "output": "CMakeFiles/c_lear.dir/src/matrix.c.obj"
+},
+{
+  "directory": "C:/projects/cProjects/c_learn/cTrix/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe  @CMakeFiles/c_lear.dir/includes_C.rsp -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\c_lear.dir\\src\\matrixLib.c.obj -c C:\\projects\\cProjects\\c_learn\\cTrix\\src\\matrixLib.c",
+  "file": "C:/projects/cProjects/c_learn/cTrix/src/matrixLib.c",
+  "output": "CMakeFiles/c_lear.dir/src/matrixLib.c.obj"
+}
+]
