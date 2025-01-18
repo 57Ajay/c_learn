@@ -1,6 +1,6 @@
 # c_learn
 
-A modern C project created with project-generator.
+Just learning C.
 
 ## Requirements
 
