@@ -2,9 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h> // For sleep function
+#include <unistd.h>
 
-// ANSI Color codes for better visibility
 #define RESET "\x1b[0m"
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
@@ -14,13 +13,159 @@
 #define CYAN "\x1b[36m"
 #define BOLD "\x1b[1m"
 
-// Clear screen function for different operating systems
+// Added maximum input length for safety
+#define MAX_INPUT_LENGTH 100
+
 void clearScreen() {
 #ifdef _WIN32
   system("cls");
 #else
   system("clear");
 #endif
+}
+
+// function to clear input buffer
+void clearInputBuffer() {
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF)
+    ;
+}
+
+// function to validate numeric input
+int getValidInt(const char *prompt) {
+  char input[MAX_INPUT_LENGTH];
+  int number;
+  int valid = 0;
+
+  do {
+    printf("%s%s%s", YELLOW, prompt, RESET);
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+      printf("%sError reading input%s\n", RED, RESET);
+      continue;
+    }
+
+    // Remove newline if present
+    input[strcspn(input, "\n")] = 0;
+
+    // Check if input is empty
+    if (strlen(input) == 0) {
+      printf("%sNo input provided. Please enter a number.%s\n", RED, RESET);
+      continue;
+    }
+
+    // Check each character is a digit
+    valid = 1;
+    for (int i = 0; input[i] != '\0'; i++) {
+      if (!isdigit(input[i])) {
+        printf("%sInvalid input '%s'. Please enter only numbers.%s\n", RED,
+               input, RESET);
+        valid = 0;
+        break;
+      }
+    }
+
+    if (valid) {
+      number = atoi(input);
+      if (number <= 0) {
+        printf("%sPlease enter a positive number.%s\n", RED, RESET);
+        valid = 0;
+      }
+    }
+  } while (!valid);
+
+  return number;
+}
+
+// function to validate float input
+float getValidFloat(const char *prompt) {
+  char input[MAX_INPUT_LENGTH];
+  float number;
+  int valid = 0;
+
+  do {
+    printf("%s%s%s", YELLOW, prompt, RESET);
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+      printf("%sError reading input%s\n", RED, RESET);
+      continue;
+    }
+
+    // Remove newline if present
+    input[strcspn(input, "\n")] = 0;
+
+    // Check if input is empty
+    if (strlen(input) == 0) {
+      printf("%sNo input provided. Please enter an amount.%s\n", RED, RESET);
+      continue;
+    }
+
+    // Check for valid float format
+    valid = 1;
+    int decimal_count = 0;
+    for (int i = 0; input[i] != '\0'; i++) {
+      if (input[i] == '.') {
+        decimal_count++;
+        if (decimal_count > 1) {
+          valid = 0;
+          break;
+        }
+      } else if (!isdigit(input[i])) {
+        valid = 0;
+        break;
+      }
+    }
+
+    if (!valid) {
+      printf("%sInvalid input '%s'. Please enter a valid amount.%s\n", RED,
+             input, RESET);
+      continue;
+    }
+
+    number = atof(input);
+    if (number <= 0) {
+      printf("%sPlease enter a positive amount.%s\n", RED, RESET);
+      valid = 0;
+    }
+  } while (!valid);
+
+  return number;
+}
+
+// function to get valid menu choice
+char getValidMenuChoice() {
+  char input[MAX_INPUT_LENGTH];
+  char choice;
+
+  while (1) {
+    printf("%sEnter your choice:%s ", BOLD, RESET);
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+      printf("%sError reading input%s\n", RED, RESET);
+      continue;
+    }
+
+    // Remove newline if present
+    input[strcspn(input, "\n")] = 0;
+
+    // Check if input is empty or too long
+    if (strlen(input) == 0) {
+      printf("%sNo input provided. Please make a selection.%s\n", RED, RESET);
+      continue;
+    }
+
+    if (strlen(input) > 1) {
+      printf("%sInvalid input '%s'. Please enter a single character.%s\n", RED,
+             input, RESET);
+      continue;
+    }
+
+    choice = tolower(input[0]);
+    if (strchr("bdwtpe", choice) == NULL) {
+      printf("%sInvalid option '%c'. Please choose from the menu.%s\n", RED,
+             choice, RESET);
+      continue;
+    }
+
+    return choice;
+  }
 }
 
 typedef struct {
@@ -38,7 +183,7 @@ void showLoadingAnimation(const char *message) {
   for (int i = 0; i < 3; i++) {
     printf(".");
     fflush(stdout);
-    usleep(300000); // 300ms delay
+    usleep(300000);
   }
   printf("%s\n", RESET);
 }
@@ -122,7 +267,6 @@ void display_menu() {
   printf("%s║%s [E] Exit                    %s║%s\n", MAGENTA, CYAN, MAGENTA,
          RESET);
   printf("%s╚═══════════════════════════════╝%s\n", MAGENTA, RESET);
-  printf("\n%sEnter your choice:%s ", BOLD, RESET);
 }
 
 int main(void) {
@@ -140,14 +284,7 @@ int main(void) {
 
   while (1) {
     display_menu();
-
-    if (scanf(" %c", &userInput) != 1) {
-      printf("%sInvalid input. Please enter a character.%s\n", RED, RESET);
-      while (getchar() != '\n')
-        ;
-      continue;
-    }
-    userInput = tolower(userInput);
+    userInput = getValidMenuChoice();
 
     int accountNumber, toAccount;
     float amount;
@@ -158,14 +295,7 @@ int main(void) {
     case 'd':
     case 'w':
     case 'p':
-      printf("%sEnter account number:%s ", YELLOW, RESET);
-      if (scanf("%d", &accountNumber) != 1) {
-        printf("%sInvalid account number input.%s\n", RED, RESET);
-        while (getchar() != '\n')
-          ;
-        break;
-      }
-
+      accountNumber = getValidInt("Enter account number: ");
       showLoadingAnimation("Processing");
       acc = find_account(accounts, len, accountNumber);
 
@@ -181,13 +311,7 @@ int main(void) {
         break;
 
       case 'd':
-        printf("%sEnter amount to deposit:%s ", YELLOW, RESET);
-        if (scanf("%f", &amount) != 1) {
-          printf("%sInvalid amount input.%s\n", RED, RESET);
-          while (getchar() != '\n')
-            ;
-          break;
-        }
+        amount = getValidFloat("Enter amount to deposit: ");
         showLoadingAnimation("Processing deposit");
         if (deposit(acc, amount) == SUCCESS) {
           printf("%sDeposit successful. New balance: ₹%.2f%s\n", GREEN,
@@ -196,13 +320,7 @@ int main(void) {
         break;
 
       case 'w':
-        printf("%sEnter amount to withdraw:%s ", YELLOW, RESET);
-        if (scanf("%f", &amount) != 1) {
-          printf("%sInvalid amount input.%s\n", RED, RESET);
-          while (getchar() != '\n')
-            ;
-          break;
-        }
+        amount = getValidFloat("Enter amount to withdraw: ");
         showLoadingAnimation("Processing withdrawal");
         if (withdraw(acc, amount) == SUCCESS) {
           printf("%sWithdrawal successful. New balance: ₹%.2f%s\n", GREEN,
@@ -217,14 +335,7 @@ int main(void) {
       break;
 
     case 't':
-      printf("%sEnter account number to transfer from:%s ", YELLOW, RESET);
-      if (scanf("%d", &accountNumber) != 1) {
-        printf("%sInvalid input for from account.%s\n", RED, RESET);
-        while (getchar() != '\n')
-          ;
-        break;
-      }
-
+      accountNumber = getValidInt("Enter account number to transfer from: ");
       showLoadingAnimation("Verifying sender account");
       acc = find_account(accounts, len, accountNumber);
       if (acc == NULL) {
@@ -232,14 +343,7 @@ int main(void) {
         break;
       }
 
-      printf("%sEnter account number to transfer to:%s ", YELLOW, RESET);
-      if (scanf("%d", &toAccount) != 1) {
-        printf("%sInvalid input for to account.%s\n", RED, RESET);
-        while (getchar() != '\n')
-          ;
-        break;
-      }
-
+      toAccount = getValidInt("Enter account number to transfer to: ");
       showLoadingAnimation("Verifying receiver account");
       toAcc = find_account(accounts, len, toAccount);
       if (toAcc == NULL) {
@@ -247,14 +351,12 @@ int main(void) {
         break;
       }
 
-      printf("%sEnter transfer amount:%s ", YELLOW, RESET);
-      if (scanf("%f", &amount) != 1) {
-        printf("%sInvalid amount input.%s\n", RED, RESET);
-        while (getchar() != '\n')
-          ;
+      if (acc == toAcc) {
+        printf("%sCannot transfer to the same account%s\n", RED, RESET);
         break;
       }
 
+      amount = getValidFloat("Enter transfer amount: ");
       showLoadingAnimation("Processing transfer");
       if (transfer(acc, toAcc, amount) == SUCCESS) {
         printf("%sTransfer successful!%s\n", GREEN, RESET);
@@ -269,9 +371,6 @@ int main(void) {
       printf("%sThank you for using our banking system. Goodbye!%s\n", GREEN,
              RESET);
       exit(0);
-
-    default:
-      printf("%sInvalid option. Please try again.%s\n", RED, RESET);
     }
   }
   return 0;
