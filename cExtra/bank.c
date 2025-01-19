@@ -11,34 +11,68 @@ typedef enum { SUCCESS, FAIL, PENDING } STATUS;
 
 float get_balance(Account *account) { return account->balance; }
 
-void deposit(Account *account, float amount) { account->balance += amount; }
+STATUS deposit(Account *account, float amount) {
+  if (amount <= 0) {
+    printf("Deposit amount must be positive.\n");
+    return FAIL;
+  }
+  account->balance += amount;
+  return SUCCESS;
+}
 
-void withdraw(Account *account, float amount) { account->balance -= amount; }
+STATUS withdraw(Account *account, float amount) {
+  if (amount <= 0) {
+    printf("Withdrawal amount must be positive.\n");
+    return FAIL;
+  }
+  if (account->balance >= amount) {
+    account->balance -= amount;
+    return SUCCESS;
+  } else {
+    printf("Insufficient balance.\n");
+    return FAIL;
+  }
+}
 
-void transfer(Account *from, Account *to, float amount) {
+STATUS transfer(Account *from, Account *to, float amount) {
+  if (amount <= 0) {
+    printf("Transfer amount must be positive.\n");
+    return FAIL;
+  }
   if (from->balance >= amount) {
     from->balance -= amount;
     to->balance += amount;
+    return SUCCESS;
+  } else {
+    printf("Transfer failed: Insufficient balance.\n");
+    return FAIL;
   }
 }
 
 int main(void) {
-  Account accounts[] = {{"Ajay Upadhyay", 572002, "ajay572002", 100000.6969},
+  Account accounts[] = {{"Ajay Upadhyay", 572002, "ajay572002", 100000.70},
                         {"Satyam", 782010, "saty782010", 696969.69}};
 
-  float ajay_balance = get_balance(&accounts[0]);
-  float satyam_balance = get_balance(&accounts[1]);
-  deposit(&accounts[0], 1000);
-  float new_ajay_balance = get_balance(&accounts[0]);
-  withdraw(&accounts[1], 69.69);
-  float new_satyam_balance = get_balance(&accounts[1]);
-  transfer(&accounts[0], &accounts[1], 1000);
-  float satya_balance_new = get_balance(&accounts[1]);
-  printf("All the details are below: \n");
-  printf("Ajay's balance: %f\n", ajay_balance);
-  printf("Satyam's balance: %f\n", satyam_balance);
-  printf("Ajay's new balance: %f\n", new_ajay_balance);
-  printf("Satyam's new balance: %f\n", new_satyam_balance);
-  printf("Satyam's new balance after transfer: %f\n", satya_balance_new);
+  printf("Initial balances:\n");
+  printf("Ajay's balance: %.2f\n", get_balance(&accounts[0]));
+  printf("Satyam's balance: %.2f\n\n", get_balance(&accounts[1]));
+
+  if (deposit(&accounts[0], 1000) == SUCCESS) {
+    printf("Deposit successful. Ajay's new balance: %.2f\n",
+           get_balance(&accounts[0]));
+  }
+
+  if (withdraw(&accounts[1], 69.69) == SUCCESS) {
+    printf("Withdrawal successful. Satyam's new balance: %.2f\n",
+           get_balance(&accounts[1]));
+  }
+
+  if (transfer(&accounts[0], &accounts[1], 1000) == SUCCESS) {
+    printf("Transfer successful.\n");
+    printf("Ajay's balance after transfer: %.2f\n", get_balance(&accounts[0]));
+    printf("Satyam's balance after transfer: %.2f\n",
+           get_balance(&accounts[1]));
+  }
+
   return 0;
 }
