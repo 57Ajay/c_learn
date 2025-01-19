@@ -1,12 +1,12 @@
-# c_lear
+# cTrix
 
-A modern C project created with project-generator.
+A Simple matrix lib project.
 
 ## Requirements
 
 - CMake 3.20 or higher
 - C compiler with C23 support
-- MinGW-w64 (for Windows)
+- MinGW-w64 (for Windows) else remove if using mac or linux
 
 ## Building
 
