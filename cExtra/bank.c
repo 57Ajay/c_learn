@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
   char name[20];
@@ -8,7 +9,7 @@ typedef struct {
   float balance;
 } Account;
 
-typedef enum { SUCCESS, FAIL, PENDING } STATUS;
+typedef enum { SUCCESS, FAIL } STATUS;
 
 float get_balance(Account *account) { return account->balance; }
 
@@ -59,6 +60,18 @@ Account *find_account(Account accounts[], int size, int account_number) {
   return NULL;
 }
 
+void print_account_details(Account *account) {
+  if (account != NULL) {
+    printf("Account Details:\n");
+    printf("Name: %s\n", account->name);
+    printf("Account Number: %d\n", account->account_number);
+    printf("IFSC: %s\n", account->ifsc);
+    printf("Balance: %.2f\n", account->balance);
+  } else {
+    printf("Account not found.\n");
+  }
+}
+
 int main(void) {
   Account accounts[] = {{"Ajay Upadhyay", 572002, "ajay572002", 100000.70},
                         {"Satyam", 782010, "saty782010", 696969.69},
@@ -66,147 +79,125 @@ int main(void) {
 
   int len = sizeof(accounts) / sizeof(accounts[0]);
   char userInput;
+
   printf("Welcome to the bank!\n\n");
 
   while (1) {
-    printf("\nChoose an appropriate option:\n");
+    printf("\nChoose an option:\n");
     printf("b: Check balance\n");
     printf("d: Deposit\n");
     printf("w: Withdraw\n");
     printf("t: Transfer\n");
+    printf("p: Print Account Details\n");
     printf("e: Exit\n");
     printf("Enter your choice: ");
+
     if (scanf(" %c", &userInput) != 1) {
-      printf("Invalid input.\n");
+      printf("Invalid input. Please enter a character.\n");
+      while (getchar() != '\n')
+        ;
       continue;
     }
+    userInput = tolower(userInput);
 
-    switch (tolower(userInput)) {
-    case 'b': {
+    int accountNumber, toAccount;
+    float amount;
+    Account *acc, *toAcc;
+
+    switch (userInput) {
+    case 'b':
+    case 'd':
+    case 'w':
+    case 'p':
       printf("Enter account number: ");
-      int accountNumber;
       if (scanf("%d", &accountNumber) != 1) {
-        printf("Invalid input.\n");
+        printf("Invalid account number input.\n");
+        while (getchar() != '\n')
+          ;
         break;
       }
-      if (find_account(accounts, len, accountNumber) == NULL) {
-        printf("Account not found.\n");
+      acc = find_account(accounts, len, accountNumber);
+      if (acc == NULL) {
+        printf("Account not found\n");
+        break;
       }
-      for (int i = 0; i < len; i++) {
-        if (accounts[i].account_number == accountNumber) {
-          printf("Balance for %s: %.2f\n", accounts[i].name,
-                 get_balance(&accounts[i]));
+
+      if (userInput == 'b') {
+        printf("Balance for %s: %.2f\n", acc->name, get_balance(acc));
+      } else if (userInput == 'd') {
+        printf("Enter amount to deposit: ");
+        if (scanf("%f", &amount) != 1) {
+          printf("Invalid amount input.\n");
+          while (getchar() != '\n')
+            ;
           break;
         }
-      }
-      break;
-    }
-
-    case 'd': {
-      printf("Enter account number: ");
-      int accountNumber;
-      if (scanf("%d", &accountNumber) != 1) {
-        printf("Invalid input.\n");
-        break;
-      }
-      if (find_account(accounts, len, accountNumber) == NULL) {
-        printf("Account not found.\n");
-      }
-      printf("Enter amount to deposit: ");
-      float amount;
-      if (scanf("%f", &amount) != 1) {
-        printf("Invalid input.\n");
-        break;
-      }
-      for (int i = 0; i < len; i++) {
-        if (accounts[i].account_number == accountNumber) {
-          if (deposit(&accounts[i], amount) == SUCCESS) {
-            printf("Deposit successful. New balance: %.2f\n",
-                   get_balance(&accounts[i]));
-          }
+        if (deposit(acc, amount) == SUCCESS) {
+          printf("Deposit successful. New balance: %.2f\n", get_balance(acc));
+        }
+      } else if (userInput == 'w') {
+        printf("Enter amount to withdraw: ");
+        if (scanf("%f", &amount) != 1) {
+          printf("Invalid amount input.\n");
+          while (getchar() != '\n')
+            ;
           break;
         }
-      }
-      break;
-    }
-
-    case 'w': {
-      printf("Enter account number: ");
-      int accountNumber;
-      if (scanf("%d", &accountNumber) != 1) {
-        printf("Invalid input.\n");
-        break;
-      }
-      if (find_account(accounts, len, accountNumber) == NULL) {
-        printf("Account not found.\n");
-      }
-      printf("Enter amount to withdraw: ");
-      float amount;
-      if (scanf("%f", &amount) != 1) {
-        printf("Invalid input.\n");
-        break;
-      }
-      for (int i = 0; i < len; i++) {
-        if (accounts[i].account_number == accountNumber) {
-          if (withdraw(&accounts[i], amount) == SUCCESS) {
-            printf("Withdrawal successful. New balance: %.2f\n",
-                   get_balance(&accounts[i]));
-          }
-          break;
+        if (withdraw(acc, amount) == SUCCESS) {
+          printf("Withdrawal successful. New balance: %.2f\n",
+                 get_balance(acc));
         }
+      } else if (userInput == 'p') {
+        print_account_details(acc);
       }
       break;
-    }
 
-    case 't': {
+    case 't':
       printf("Enter account number to transfer from: ");
-      int fromAccount;
-      if (scanf("%d", &fromAccount) != 1) {
-        printf("Invalid input.\n");
+      if (scanf("%d", &accountNumber) != 1) {
+        printf("Invalid input for from account.\n");
+        while (getchar() != '\n')
+          ;
         break;
       }
-      if (find_account(accounts, len, fromAccount) == NULL) {
-        printf("Account not found.\n");
+      acc = find_account(accounts, len, accountNumber);
+      if (acc == NULL) {
+        printf("Sender Account not found\n");
+        break;
       }
+
       printf("Enter account number to transfer to: ");
-      int toAccount;
       if (scanf("%d", &toAccount) != 1) {
-        printf("Invalid input.\n");
+        printf("Invalid input for to account.\n");
+        while (getchar() != '\n')
+          ;
         break;
       }
-      if (find_account(accounts, len, toAccount) == NULL) {
-        printf("Account not found.\n");
+      toAcc = find_account(accounts, len, toAccount);
+      if (toAcc == NULL) {
+        printf("Receiver Account not found\n");
+        break;
       }
       printf("Enter transfer amount: ");
-      float amount;
       if (scanf("%f", &amount) != 1) {
-        printf("Invalid input.\n");
+        printf("Invalid amount input.\n");
+        while (getchar() != '\n')
+          ;
         break;
       }
-      int fromIndex = -1, toIndex = -1;
-      for (int i = 0; i < len; i++) {
-        if (accounts[i].account_number == fromAccount) {
-          fromIndex = i;
-        }
-        if (accounts[i].account_number == toAccount) {
-          toIndex = i;
-        }
-      }
-      if (fromIndex != -1 && toIndex != -1) {
-        if (transfer(&accounts[fromIndex], &accounts[toIndex], amount) ==
-            SUCCESS) {
-          printf("Transfer successful.\n");
-        }
+
+      if (transfer(acc, toAcc, amount) == SUCCESS) {
+        printf("Transfer successful.\n");
       }
       break;
-    }
 
     case 'e':
       printf("Exiting the program. Thank you!\n");
-      return 0;
+      exit(0);
 
     default:
       printf("Invalid option. Please try again.\n");
     }
   }
+  return 0;
 }
