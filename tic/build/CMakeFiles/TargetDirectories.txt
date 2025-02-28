@@ -1,3 +1,0 @@
-C:/projects/cProjects/tic/build/CMakeFiles/tic.dir
-C:/projects/cProjects/tic/build/CMakeFiles/edit_cache.dir
-C:/projects/cProjects/tic/build/CMakeFiles/rebuild_cache.dir
