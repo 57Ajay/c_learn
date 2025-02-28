@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/projects/cProjects/tic/build",
+  "command": "C:\\msys64\\mingw64\\bin\\cc.exe   -std=c2x -Wall -Wextra -Wpedantic -o CMakeFiles\\tic.dir\\src\\main.c.obj -c C:\\projects\\cProjects\\tic\\src\\main.c",
+  "file": "C:/projects/cProjects/tic/src/main.c",
+  "output": "CMakeFiles/tic.dir/src/main.c.obj"
+}
+]
