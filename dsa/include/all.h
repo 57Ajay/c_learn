@@ -3,5 +3,5 @@
 
 // sorting algorithms...
 int arr_sortings();
-
+int linked_list();
 #endif
