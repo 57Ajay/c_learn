@@ -1,6 +1,11 @@
 [
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -Wall -Wextra -g -Iinclude -c src/stack.c -o build/stack.o",
+    "file": "/home/ajay57/Projects/c/c_learn/dsa/src/stack.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
     "command": "gcc -Wall -Wextra -g -Iinclude -c src/linkedList.c -o build/linkedList.o",
     "file": "/home/ajay57/Projects/c/c_learn/dsa/src/linkedList.c"
   },
