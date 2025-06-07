@@ -1,22 +1,37 @@
 [
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
-    "command": "gcc -Wall -Wextra -g -Iinclude -c src/stack.c -o build/stack.o",
-    "file": "/home/ajay57/Projects/c/c_learn/dsa/src/stack.c"
+    "command": "gcc -c src/basicHash.c -o bin/obj/basicHash.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/basicHash.c"
   },
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
-    "command": "gcc -Wall -Wextra -g -Iinclude -c src/linkedList.c -o build/linkedList.o",
-    "file": "/home/ajay57/Projects/c/c_learn/dsa/src/linkedList.c"
+    "command": "gcc -c src/stack.c -o bin/obj/stack.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/stack.c"
   },
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
-    "command": "gcc -Wall -Wextra -g -Iinclude -c src/main.c -o build/main.o",
-    "file": "/home/ajay57/Projects/c/c_learn/dsa/src/main.c"
+    "command": "gcc -c src/linkedList.c -o bin/obj/linkedList.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/linkedList.c"
   },
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
-    "command": "gcc -Wall -Wextra -g -Iinclude -c src/array.c -o build/array.o",
-    "file": "/home/ajay57/Projects/c/c_learn/dsa/src/array.c"
+    "command": "gcc -c src/hashTable.c -o bin/obj/hashTable.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/hashTable.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/main.c -o bin/obj/main.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/main.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/queue.c -o bin/obj/queue.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/queue.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/array.c -o bin/obj/array.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/array.c"
   }
 ]

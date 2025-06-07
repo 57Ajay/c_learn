@@ -17,7 +17,7 @@ Stack *create(int capacity, size_t elem_size) {
         return NULL;
     }
 
-    Stack *stk = malloc(sizeof(Stack));
+    Stack *stk = (Stack *)malloc(sizeof(Stack));
     if (!stk) {
         perror("Failed to allocate stack");
         return NULL;

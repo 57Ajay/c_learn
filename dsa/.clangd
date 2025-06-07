@@ -1,4 +1,0 @@
-# CompileFlags:
-#   Add: [-Iinclude]
-CompileFlags:
-  Add: [ -std=c23 ]

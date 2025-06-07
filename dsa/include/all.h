@@ -9,4 +9,12 @@ int linked_list();
 
 // Stack
 int stackMain();
+
+// Queue
+
+int queueMain();
+
+// hashTable
+int hashTable();
+int testhash();
 #endif
