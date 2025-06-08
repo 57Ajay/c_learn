@@ -1,18 +1,9 @@
-#include "all.h"
+#include "queue.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct Queue {
-    void *arr;
-    uint64_t capacity;
-    uint8_t element_size;
-    int front;
-    int rear;
-    int size;
-} Queue;
 
 Queue *createQueue(uint64_t capacity, uint8_t element_size) {
     if (capacity == 0 || element_size == 0) {

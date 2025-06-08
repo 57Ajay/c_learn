@@ -11,6 +11,11 @@
   },
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/tree.c -o bin/obj/tree.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/tree.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
     "command": "gcc -c src/linkedList.c -o bin/obj/linkedList.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
     "file": "src/linkedList.c"
   },

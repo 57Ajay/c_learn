@@ -17,4 +17,7 @@ int queueMain();
 // hashTable
 int hashTable();
 int testhash();
+
+// Tree
+int treeMain();
 #endif
