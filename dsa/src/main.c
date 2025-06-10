@@ -1,4 +1,6 @@
 #include "all.h"
+#include "graph.h"
+#include "heap.h"
 #include "queue.h"
 #include "tree.h"
 #include <stdio.h>
@@ -10,7 +12,9 @@ int main() {
     // printf("returns: %d", queueMain());
     // printf("returns: %d", hashTable());
     // printf("\nTesthash: %d\n", testhash());
-    printf("\nTree: %d\n", BTMain());
+    // printf("\nTree: %d\n", BTMain());
+    // printf("\nHEAP: %d", heapMain());
+    printf("\nGRAPH: %d\n", graphMain());
 
     printf("\n");
     return 0;

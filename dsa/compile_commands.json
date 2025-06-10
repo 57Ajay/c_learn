@@ -11,8 +11,18 @@
   },
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/graph.c -o bin/obj/graph.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/graph.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
     "command": "gcc -c src/tree.c -o bin/obj/tree.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
     "file": "src/tree.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/heap.c -o bin/obj/heap.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/heap.c"
   },
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",

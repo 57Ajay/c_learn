@@ -344,6 +344,68 @@ BTreeNode *create_AVL(void *arr, int count, uint8_t elem_size,
     return root;
 }
 
+BTreeNode *min_value_node(BTreeNode *node) {
+    BTreeNode *current = node;
+    while (current && current->left)
+        current = current->left;
+    return current;
+}
+
+BTreeNode *delete_AVL(BTreeNode *root, void *data, uint8_t elem_size,
+                      int (*cmp)(void *, void *)) {
+    if (!root)
+        return NULL;
+
+    int res = cmp(data, root->data);
+
+    if (res < 0) {
+        root->left = delete_AVL(root->left, data, elem_size, cmp);
+    } else if (res > 0) {
+        root->right = delete_AVL(root->right, data, elem_size, cmp);
+    } else {
+        // Node found
+        if (!root->left || !root->right) {
+            BTreeNode *temp = root->left ? root->left : root->right;
+            if (!temp) {
+                free(root->data);
+                free(root);
+                return NULL;
+            } else {
+                *root = *temp;
+                free(temp);
+            }
+        } else {
+            // Two children
+            BTreeNode *temp = min_value_node(root->right);
+            memcpy(root->data, temp->data, elem_size);
+            root->right = delete_AVL(root->right, temp->data, elem_size, cmp);
+        }
+    }
+
+    // Update height
+    root->height = 1 + maxVal(get_height(root->left), get_height(root->right));
+    int balance = get_balance(root);
+
+    // Rebalance
+    if (balance > 1 && get_balance(root->left) >= 0)
+        return right_rotate(root);
+
+    if (balance > 1 && get_balance(root->left) < 0) {
+        root->left = left_rotate(root->left);
+        return right_rotate(root);
+    }
+
+    if (balance < -1 && get_balance(root->right) <= 0)
+        return left_rotate(root);
+
+    if (balance < -1 && get_balance(root->right) > 0) {
+        root->right = right_rotate(root->right);
+        return left_rotate(root);
+    }
+
+    return root;
+}
+
 int BTMain() {
     int arr[] = {1, 2, 3, 4, 5, 6, 7};
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -405,7 +467,7 @@ int BTMain() {
 
     printf("\n---------------AVL BTree------------------------\n");
     int arr_avl[] = {10, 20, 30, 40, 50, 25};
-    int len_arr_avl = sizeof(arr) / sizeof(arr[0]);
+    int len_arr_avl = sizeof(arr_avl) / sizeof(arr_avl[0]);
 
     BTreeNode *avl = create_AVL(arr_avl, len_arr_avl, sizeof(int), compare_int);
 
@@ -418,6 +480,12 @@ int BTMain() {
     printPreorder(avl);
 
     printf("\n\nVisual AVL Tree:\n");
+    printTreeVisual(avl, 0);
+    int del = 40;
+    printf("\nDeleting %d...\n", del);
+    avl = delete_AVL(avl, &del, sizeof(int), compare_int);
+
+    printf("AVL Tree After Deletion:\n");
     printTreeVisual(avl, 0);
 
     destroy_simple_BTree(avl);

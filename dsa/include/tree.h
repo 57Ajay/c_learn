@@ -3,10 +3,10 @@
 
 #include <stdint.h>
 typedef struct BTreeNode {
-    void *data;
-    struct BTreeNode *left;
-    struct BTreeNode *right;
-    int height;
+  void *data;
+  struct BTreeNode *left;
+  struct BTreeNode *right;
+  int height;
 } BTreeNode;
 
 int BTMain();
@@ -41,5 +41,5 @@ BTreeNode *insert_AVL(BTreeNode *root, void *data, uint8_t elem_size,
                       int (*cmp)(void *, void *));
 BTreeNode *create_AVL(void *arr, int count, uint8_t elem_size,
                       int (*cmp)(void *, void *));
-
+BTreeNode *min_value_node(BTreeNode *node);
 #endif
