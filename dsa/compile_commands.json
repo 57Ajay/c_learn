@@ -1,6 +1,11 @@
 [
   {
     "directory": "/home/ajay57/Projects/c/c_learn/dsa",
+    "command": "gcc -c src/sortestPath.c -o bin/obj/sortestPath.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
+    "file": "src/sortestPath.c"
+  },
+  {
+    "directory": "/home/ajay57/Projects/c/c_learn/dsa",
     "command": "gcc -c src/basicHash.c -o bin/obj/basicHash.c.o -Iinclude -std=c23 -Wall -Wextra -O2",
     "file": "src/basicHash.c"
   },
